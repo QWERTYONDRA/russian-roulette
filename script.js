@@ -226,7 +226,7 @@ if(turn === 2){
           switchTurn();
           disableAllButtons();
           var imageElement = document.getElementById("ppanak");
-              imageElement.src = "img/levyPPrycDead.png";
+              imageElement.src = "img/pravyPNaSebeMrtvola.png";
           //Vyskoci konec hry a moznost opakovat (resetne stránku)
           
       } 
