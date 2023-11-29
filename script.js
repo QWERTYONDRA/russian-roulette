@@ -186,7 +186,7 @@ if(turn === 1){
             }
             if(index == chamber){
 
-                var imageElement = document.getElementById("panak");
+                var imageElement = document.getElementById("ppanak");
                 playPew()
                 playAuTwo();
                 redirectUsrP1();
@@ -257,7 +257,7 @@ if(turn === 2){
           }
           if(index == chamber){
 
-              var imageElement = document.getElementById("ppanak");
+              var imageElement = document.getElementById("panak");
               playPew();
               playAuOne();
               redirectUsrP2();
