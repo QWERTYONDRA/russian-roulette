@@ -166,6 +166,7 @@ if(turn === 1){
                 var imageElement = document.getElementById("panak");
                 playPew()
                 playAuTwo();
+                redirectUsrP1();
                 imageElement.src = "img/levyPPrycDead.png";
                 //Vyskoci konec hry a moznost opakovat (resetne stránku)
                 
@@ -195,7 +196,7 @@ if(turn === 2){
       }
       if(index == chamber){
           playPew();
-          playAuOne();
+          playAuTwo();
           redirectUsrP1();
           var imageElement = document.getElementById("ppanak");
               imageElement.src = "img/levyPPrycDead.png";
@@ -230,8 +231,9 @@ if(turn === 2){
           if(index == chamber){
 
               var imageElement = document.getElementById("ppanak");
-              playPew()
-              playAuTwo();
+              playPew();
+              playAuOne();
+              redirectUsrP2();
               imageElement.src = "img/PravyPPrycLevyDead.png";
               //Vyskoci konec hry a moznost opakovat (resetne stránku)
               
@@ -241,5 +243,4 @@ if(turn === 2){
           switchTurn();
           
   });
-
 }
