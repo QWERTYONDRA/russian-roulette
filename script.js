@@ -75,7 +75,20 @@ var chamber = Math.ceil(Math.random()*6);
 var index = 6;
 var i = 2;
 
-
+function disableAllButtons(){
+  bang.disabled = true;
+    whoosh.disabled = true;
+    betray.disabled = true;
+    bang.style.backgroundColor = "gray";
+    whoosh.style.backgroundColor = "gray";
+    betray.style.backgroundColor = "gray";
+    bang2.disabled = true;
+    whoosh2.disabled = true;
+    betray2.disabled = true;
+    bang2.style.backgroundColor = "gray";
+    whoosh2.style.backgroundColor = "gray";
+    betray2.style.backgroundColor = "gray";
+}
 
 function switchTurn() {
   if(turn === 1){
@@ -93,7 +106,10 @@ function switchTurn() {
     whoosh2.disabled = false;
     betray2.disabled = false;
     turn = 2;
+    var imageElement = document.getElementById("ppanak");
+    imageElement.src = "img/pravyP.png";
     return turn;
+    
   }
   else if(turn === 2){
     changeRedBg();
@@ -112,16 +128,21 @@ function switchTurn() {
     whoosh.disabled = false;
     betray.disabled = false;
     turn = 1;
+    var imageElement = document.getElementById("panak");
+    imageElement.src = "img/levyP.png";
     return turn;
   }
 }
 
    //Levý hráč
 if(turn === 1){
+
   switchTurn();
+
     bang.addEventListener('click', function(){
         var imageElement = document.getElementById("panak");
         imageElement.src = "img/levyPNaSebe.png";
+        
         if(index != chamber){
             playClick();
             addClick();
@@ -132,6 +153,8 @@ if(turn === 1){
             playPew();
             playAuOne();
             redirectUsrP2();
+            switchTurn();
+            disableAllButtons();
             var imageElement = document.getElementById("panak");
                 imageElement.src = "img/levyPNaSebeAMrtvola.png";
             //Vyskoci konec hry a moznost opakovat (resetne stránku)
@@ -167,6 +190,8 @@ if(turn === 1){
                 playPew()
                 playAuTwo();
                 redirectUsrP1();
+                switchTurn();
+                disableAllButtons();
                 imageElement.src = "img/levyPPrycDead.png";
                 //Vyskoci konec hry a moznost opakovat (resetne stránku)
                 
@@ -198,6 +223,8 @@ if(turn === 2){
           playPew();
           playAuTwo();
           redirectUsrP1();
+          switchTurn();
+          disableAllButtons();
           var imageElement = document.getElementById("ppanak");
               imageElement.src = "img/levyPPrycDead.png";
           //Vyskoci konec hry a moznost opakovat (resetne stránku)
@@ -234,6 +261,8 @@ if(turn === 2){
               playPew();
               playAuOne();
               redirectUsrP2();
+              switchTurn();
+              disableAllButtons();
               imageElement.src = "img/PravyPPrycLevyDead.png";
               //Vyskoci konec hry a moznost opakovat (resetne stránku)
               
