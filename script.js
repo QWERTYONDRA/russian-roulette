@@ -56,25 +56,75 @@ function playPew() {
     }, 3000);
   
   }
+
+  function changeRedBg() {
+    document.body.style.backgroundColor = "rgba(255, 0, 0, 0.568)"; 
+}
+function changeBlueBg() {
+  document.body.style.backgroundColor = "rgba(0, 0, 255, 0.568)";
+}
+
 var bang = document.getElementById("bang");
 var whoosh = document.getElementById("whoosh");
 var betray = document.getElementById("betray");
-
+var turn = 1;
 var chamber = Math.ceil(Math.random()*6);
 var index = 6;
 var i = 2;
+var bang2 = document.getElementById("bang2");
+var whoosh2 = document.getElementById("whoosh2");
+var betray2 = document.getElementById("betray2");
+
+
+function switchTurn() {
+  if(turn === 1){
+    
+    bang.disabled = true;
+    whoosh.disabled = true;
+    betray.disabled = true;
+    bang.style.backgroundColor = "gray";
+    whoosh.style.backgroundColor = "gray";
+    betray.style.backgroundColor = "gray";
+    bang2.style.backgroundColor = "red";
+    whoosh2.style.backgroundColor = "rgb(3, 209, 3)";
+    betray2.style.backgroundColor = "orange";
+    bang2.disabled = false;
+    whoosh2.disabled = false;
+    betray2.disabled = false;
+    turn = 2;
+  }
+  else{
+    
+    // Disable 2
+    bang2.disabled = true;
+    whoosh2.disabled = true;
+    betray2.disabled = true;
+    bang2.style.backgroundColor = "gray";
+    whoosh2.style.backgroundColor = "gray";
+    betray2.style.backgroundColor = "gray";
+    // Enable 1
+    bang.style.backgroundColor = "red";
+    whoosh.style.backgroundColor = "rgb(3, 209, 3)";
+    betray.style.backgroundColor = "orange";
+    bang.disabled = false;
+    whoosh.disabled = false;
+    betray.disabled = false;
+    turn = 1;
+  }
+}
+
    //Levý hráč
-   if(i % 2 == 0){
- 
+if(turn === 1){
+    changeRedBg();
     bang.addEventListener('click', function(){
         var imageElement = document.getElementById("panak");
         imageElement.src = "img/levyPNaSebe.png";
         if(index != chamber){
             playClick();
             addClick();
-            
+            switchTurn();
         }
-        if(index == chamber){
+        else if(index == chamber){
             playPew();
             playAuOne();
             redirectUsrP2();
@@ -97,7 +147,7 @@ var i = 2;
         var imageElement = document.getElementById("panak");
 
         imageElement.src = "img/levyPPryc.png";
-
+        switchTurn();
     });
     
     betray.addEventListener('click', function(){
@@ -118,13 +168,74 @@ var i = 2;
             } 
             index--;
             i++;
-            console.log(chamber)
+            switchTurn();
     });
 
-}
+// PLAYER 2
 
-else {
-    console.log(i);
-    bang.disabled = true;
-    bang.style.backgroundColor = "gray";
- };
+
+
+
+
+}
+else if(turn === 2){
+  changeBlueBg();
+  bang2.addEventListener('click', function(){
+      var imageElement = document.getElementById("panak");
+      imageElement.src = "img/pravyPNaSebe.png";
+      if(index != chamber){
+          playClick();
+          addClick();
+          
+          
+      }
+      if(index == chamber){
+          playPew();
+          playAuOne();
+          redirectUsrP1();
+          var imageElement = document.getElementById("panak");
+              imageElement.src = "img/levyPPrycDead.png";
+          //Vyskoci konec hry a moznost opakovat (resetne stránku)
+          
+      } 
+      index--;
+       i++;
+      
+  });
+  
+  whoosh2.addEventListener('click', function(){
+      chamber = Math.ceil(Math.random()*6);
+      //nějaká animace spinování chamberu
+      index = 6;
+      i++;
+      playWhoosh();
+      var imageElement = document.getElementById("panak");
+
+      imageElement.src = "img/pravyPPryc.png";
+      switchTurn();
+
+  });
+  
+  betray2.addEventListener('click', function(){
+      var imageElement = document.getElementById("panak");
+  
+      imageElement.src = "img/pravyPPryc.png";
+          if (index != chamber){
+              playClick();
+          }
+          if(index == chamber){
+
+              var imageElement = document.getElementById("panak");
+              playPew()
+              playAuTwo();
+              imageElement.src = "img/levyPNaSebeAMrtvola.png";
+              //Vyskoci konec hry a moznost opakovat (resetne stránku)
+              
+          } 
+          index--;
+          i++;
+          switchTurn();
+          
+  });
+
+}

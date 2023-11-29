@@ -15,10 +15,17 @@ body{
 button{
     margin: 0.2em;
     font-size: xx-large;
-    border: solid 3px black;
+    border: solid 2px black;
     width: 3em;
+    border-radius: 10px;
 }
 a{
     text-decoration: none;
     color: black !important;
+}
+.bg-red{
+    background-color: rgba(255, 0, 0, 0.568);
+}
+.bg-blue{
+    background-color: rgba(0, 17, 255, 0.568);
 }
