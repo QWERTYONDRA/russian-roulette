@@ -67,18 +67,19 @@ function changeBlueBg() {
 var bang = document.getElementById("bang");
 var whoosh = document.getElementById("whoosh");
 var betray = document.getElementById("betray");
+var bang2 = document.getElementById("bang2");
+var whoosh2 = document.getElementById("whoosh2");
+var betray2 = document.getElementById("betray2");
 var turn = 1;
 var chamber = Math.ceil(Math.random()*6);
 var index = 6;
 var i = 2;
-var bang2 = document.getElementById("bang2");
-var whoosh2 = document.getElementById("whoosh2");
-var betray2 = document.getElementById("betray2");
+
 
 
 function switchTurn() {
   if(turn === 1){
-    
+    changeBlueBg();
     bang.disabled = true;
     whoosh.disabled = true;
     betray.disabled = true;
@@ -92,9 +93,10 @@ function switchTurn() {
     whoosh2.disabled = false;
     betray2.disabled = false;
     turn = 2;
+    return turn;
   }
-  else{
-    
+  else if(turn === 2){
+    changeRedBg();
     // Disable 2
     bang2.disabled = true;
     whoosh2.disabled = true;
@@ -110,18 +112,20 @@ function switchTurn() {
     whoosh.disabled = false;
     betray.disabled = false;
     turn = 1;
+    return turn;
   }
 }
 
    //Levý hráč
 if(turn === 1){
-    changeRedBg();
+  switchTurn();
     bang.addEventListener('click', function(){
         var imageElement = document.getElementById("panak");
         imageElement.src = "img/levyPNaSebe.png";
         if(index != chamber){
             playClick();
             addClick();
+
             switchTurn();
         }
         else if(index == chamber){
@@ -176,16 +180,16 @@ if(turn === 1){
 
 
 
-
 }
-else if(turn === 2){
-  changeBlueBg();
+if(turn === 2){
+  switchTurn();
   bang2.addEventListener('click', function(){
-      var imageElement = document.getElementById("panak");
+      var imageElement = document.getElementById("ppanak");
       imageElement.src = "img/pravyPNaSebe.png";
       if(index != chamber){
           playClick();
           addClick();
+          switchTurn();
           
           
       }
@@ -193,7 +197,7 @@ else if(turn === 2){
           playPew();
           playAuOne();
           redirectUsrP1();
-          var imageElement = document.getElementById("panak");
+          var imageElement = document.getElementById("ppanak");
               imageElement.src = "img/levyPPrycDead.png";
           //Vyskoci konec hry a moznost opakovat (resetne stránku)
           
@@ -209,7 +213,7 @@ else if(turn === 2){
       index = 6;
       i++;
       playWhoosh();
-      var imageElement = document.getElementById("panak");
+      var imageElement = document.getElementById("ppanak");
 
       imageElement.src = "img/pravyPPryc.png";
       switchTurn();
@@ -217,7 +221,7 @@ else if(turn === 2){
   });
   
   betray2.addEventListener('click', function(){
-      var imageElement = document.getElementById("panak");
+      var imageElement = document.getElementById("ppanak");
   
       imageElement.src = "img/pravyPPryc.png";
           if (index != chamber){
@@ -225,10 +229,10 @@ else if(turn === 2){
           }
           if(index == chamber){
 
-              var imageElement = document.getElementById("panak");
+              var imageElement = document.getElementById("ppanak");
               playPew()
               playAuTwo();
-              imageElement.src = "img/levyPNaSebeAMrtvola.png";
+              imageElement.src = "img/PravyPPrycLevyDead.png";
               //Vyskoci konec hry a moznost opakovat (resetne stránku)
               
           } 
