@@ -5,10 +5,11 @@ body{
 }
 
 img{
-    padding-top: 7em;
+    padding-top: 5.9em;
     width: 1850px;
     position: absolute;
     margin: auto;
+    margin-left: -6em;
 }
 @media only screen and (max-width: 330px) {
     img{
