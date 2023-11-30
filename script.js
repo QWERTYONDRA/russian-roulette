@@ -142,6 +142,8 @@ if (turn === 1) {
       playClick();
       addClick();
       switchTurn();
+      index--;
+      i++;
     }
     else if (index == chamber) {
       playPew();
@@ -153,8 +155,6 @@ if (turn === 1) {
       imageElement.src = "img/levyPNaSebeAMrtvola.png";
       //Vyskoci konec hry a moznost opakovat (resetne stránku)
     }
-    index--;
-    i++;
   });
 
   whoosh.addEventListener('click', function () {
@@ -230,6 +230,8 @@ if (turn === 2) {
     imageElement.src = "img/pravyPPryc.png";
     if (index != chamber) {
       playClick();
+      index--;
+      i++;
     }
     if (index == chamber) {
       var imageElement = document.getElementById("panak");
@@ -241,8 +243,7 @@ if (turn === 2) {
       imageElement.src = "img/PravyPPrycLevyDead.png";
       //Vyskoci konec hry a moznost opakovat (resetne stránku)
     }
-    index--;
-    i++;
+    
     switchTurn();
   });
 }

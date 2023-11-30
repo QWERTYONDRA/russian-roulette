@@ -67,3 +67,8 @@ button{
         width: 450px;
     }
 }
+@media only screen and (max-width: 400px) {
+    img{
+        width: 380px;
+    }
+}
