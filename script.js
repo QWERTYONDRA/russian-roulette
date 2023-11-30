@@ -92,46 +92,59 @@ function switchTurn() {
     // Disable 1
     bang.disabled = true;
     whoosh.disabled = true;
-    betray.disabled = true;
     bang.style.backgroundColor = "gray";
     whoosh.style.backgroundColor = "gray";
-    betray.style.backgroundColor = "gray";
     // Enable 2
     bang2.style.backgroundColor = "red";
     whoosh2.style.backgroundColor = "rgb(3, 209, 3)";
-    betray2.style.backgroundColor = "orange";
     bang2.disabled = false;
     whoosh2.disabled = false;
-    betray2.disabled = false;
     turn = 2;
     var imageElement = document.getElementById("ppanak");
     imageElement.src = "img/pravyP.png";
+    disableBetrays();
     return turn;
-
   }
   else if (turn === 2) {
     changeRedBg();
     // Disable 2
     bang2.disabled = true;
     whoosh2.disabled = true;
-    betray2.disabled = true;
     bang2.style.backgroundColor = "gray";
     whoosh2.style.backgroundColor = "gray";
-    betray2.style.backgroundColor = "gray";
     // Enable 1
     bang.style.backgroundColor = "red";
     whoosh.style.backgroundColor = "rgb(3, 209, 3)";
-    betray.style.backgroundColor = "orange";
     bang.disabled = false;
     whoosh.disabled = false;
-    betray.disabled = false;
     turn = 1;
     var imageElement = document.getElementById("panak");
     imageElement.src = "img/levyP.png";
+    disableBetrays();
     return turn;
   }
 }
 
+var usedBetray1 = 0;
+var usedBetray2 = 0;
+
+function disableBetrays() {
+  if (usedBetray1 === 0 && turn === 1) {
+    betray.disabled = false;
+    betray.style.backgroundColor = "orange";
+  } else {
+    betray.disabled = true;
+    betray.style.backgroundColor = "gray";
+  }
+
+  if (usedBetray2 === 0 && turn === 2) {
+    betray2.disabled = false;
+    betray2.style.backgroundColor = "orange";
+  } else {
+    betray2.disabled = true;
+    betray2.style.backgroundColor = "gray";
+  }
+}
 //Levý hráč
 if (turn === 1) {
   switchTurn();
@@ -168,10 +181,13 @@ if (turn === 1) {
     switchTurn();
   });
   betray.addEventListener('click', function () {
+    usedBetray1++;
     var imageElement = document.getElementById("panak");
     imageElement.src = "img/levyPPryc.png";
     if (index != chamber) {
       playClick();
+      index--;
+      i++;
     }
     if (index == chamber) {
       var imageElement = document.getElementById("ppanak");
@@ -181,10 +197,9 @@ if (turn === 1) {
       switchTurn();
       disableAllButtons();
       imageElement.src = "img/levyPPrycDead.png";
+
       //Vyskoci konec hry a moznost opakovat (resetne stránku)
     }
-    index--;
-    i++;
     switchTurn();
   });
 
@@ -225,13 +240,17 @@ if (turn === 2) {
     imageElement.src = "img/pravyPPryc.png";
     switchTurn();
   });
+
   betray2.addEventListener('click', function () {
+    usedBetray2++;
     var imageElement = document.getElementById("ppanak");
     imageElement.src = "img/pravyPPryc.png";
     if (index != chamber) {
       playClick();
       index--;
       i++;
+      
+
     }
     if (index == chamber) {
       var imageElement = document.getElementById("panak");
@@ -242,8 +261,9 @@ if (turn === 2) {
       disableAllButtons();
       imageElement.src = "img/PravyPPrycLevyDead.png";
       //Vyskoci konec hry a moznost opakovat (resetne stránku)
+      
+
     }
-    
     switchTurn();
   });
 }
