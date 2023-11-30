@@ -122,3 +122,6 @@ button{
         margin-top: -7em;
     }
 }
+.text-muted{
+    color: rgb(92, 92, 92);
+}
