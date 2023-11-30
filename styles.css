@@ -1,12 +1,26 @@
 body{
     transition: background-color 1s ease;
+    text-align: center;
+    margin: auto;
 }
 
 img{
     padding-top: 7em;
-    width: 1920px;
-    position: fixed;
+    width: 1850px;
+    position: absolute;
     margin: auto;
+}
+@media only screen and (max-width: 330px) {
+    img{
+        width: 380px;
+        margin-left: -3em;
+    }
+}
+@media only screen and (max-width: 450px) {
+    img{
+        width: 380px;
+        margin-left: -2em;
+    }
 }
 .center{
     display: flex;
@@ -42,6 +56,11 @@ button{
     bottom: 0;
     margin-right: .5em;
 }
+@media only screen and (max-width: 1919px) {
+    img{
+        width: 1600px;
+    }
+}
 @media only screen and (max-width: 1600px) {
     img{
         width: 1200px;
@@ -52,7 +71,23 @@ button{
         width: 900px;
     }
 }
+@media only screen and (max-width: 900px) {
+    img{
+        width: 800px;
+    }
+}
 @media only screen and (max-width: 800px) {
+    img{
+        width: 650px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    img{
+        width: 600px;
+        margin-left: -2em;
+    }
+}
+@media only screen and (max-width: 600px) {
     img{
         width: 600px;
     }
@@ -64,7 +99,7 @@ button{
 }
 @media only screen and (max-width: 500px) {
     img{
-        width: 450px;
+        width: 400px;
     }
 }
 @media only screen and (max-width: 400px) {
